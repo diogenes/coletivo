@@ -21,6 +21,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{TODO: longer description of your gem}
   gem.email = "diogenes.araujo@gmail.com"
   gem.authors = ["Diógenes Falcão"]
+  gem.files = Dir["{lib}/**/*"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
