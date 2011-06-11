@@ -5,8 +5,19 @@ require 'active_support'
 
 module Coletivo
   module Models
+    autoload :Recommendable, 'coletivo/models/recommendable'
     autoload :Person, 'coletivo/models/person'
     autoload :PersonRating, 'coletivo/models/person_rating'
+  end
+
+  module Similarity
+    NO_SIMILARITY = -1.0..0.49
+    SIMILAR = 0.5..0.99
+    IDENTICAL = 1.0
+
+    autoload :BaseStrategy, 'coletivo/similarity/base_strategy'
+    autoload :EuclideanDistanceStrategy, 'coletivo/similarity/euclidean_distance_strategy'
+    autoload :Engine, 'coletivo/similarity/engine'
   end
 
   module Config
