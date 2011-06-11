@@ -17,6 +17,7 @@ module Coletivo
 
     autoload :BaseStrategy, 'coletivo/similarity/base_strategy'
     autoload :EuclideanDistanceStrategy, 'coletivo/similarity/euclidean_distance_strategy'
+    autoload :PearsonCorrelationStrategy, 'coletivo/similarity/pearson_correlation_strategy'
     autoload :Engine, 'coletivo/similarity/engine'
   end
 

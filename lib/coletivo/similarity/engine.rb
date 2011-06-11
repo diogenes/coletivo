@@ -11,7 +11,11 @@ module Coletivo
       protected
 
       def self.load_strategy(key)
-        Coletivo::Similarity::EuclideanDistanceStrategy.new
+        if :pearson == key
+          Coletivo::Similarity::PearsonCorrelationStrategy.new
+        else
+          Coletivo::Similarity::EuclideanDistanceStrategy.new
+        end
       end
     end # Engine
   end # Similarity
