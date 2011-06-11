@@ -16,5 +16,12 @@ require 'test/unit'
 require 'turn'
 require 'shoulda'
 
+ActiveRecord::Base.establish_connection({
+  :adapter => 'sqlite3',
+  :database => ':memory:'
+})
+
+require 'test/db/schema'
+
 class Test::Unit::TestCase
 end
