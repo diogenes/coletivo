@@ -7,13 +7,14 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'test/unit'
-require 'shoulda'
-require 'turn'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'coletivo'
+
+require 'test/unit'
+require 'turn'
+require 'shoulda'
 
 class Test::Unit::TestCase
 end
