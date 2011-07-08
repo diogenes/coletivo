@@ -3,6 +3,7 @@ require 'models_helper'
 
 class PersonTest < Test::Unit::TestCase
   def setup
+    super
     @person = User.create(:name => 'Uber Geek')
   end
 

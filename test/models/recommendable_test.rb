@@ -3,6 +3,8 @@ require 'models_helper'
 
 class RecommendableTest < Test::Unit::TestCase
   def setup
+    super
+
     @person1 = User.create(:name => 'Person 1')
     @person2 = User.create(:name => 'Person 2')
   end

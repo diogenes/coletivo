@@ -11,3 +11,16 @@ def ratings_container
   Coletivo::Config.ratings_container
 end
 
+class Test::Unit::TestCase
+  def setup
+    truncate! :person_ratings, :users, :movies
+  end
+
+  private
+
+  def truncate!(*tables)
+    [*tables].each do |t|
+      ActiveRecord::Base.connection.execute("DELETE FROM #{t}")
+    end
+  end
+end
