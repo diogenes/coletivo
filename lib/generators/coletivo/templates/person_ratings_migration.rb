@@ -11,6 +11,8 @@ class CreatePersonRatings < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :person_ratings, :rateable_type, :unique => false
   end
 
   def self.down

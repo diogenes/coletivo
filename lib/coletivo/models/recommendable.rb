@@ -41,9 +41,9 @@ module Coletivo
             .compact
         end
 
-        def find_ratings_for_recommendation(recommendable)
+        def find_ratings_for_recommendation(recommendable, rateable_type)
           Coletivo::Config.ratings_container\
-            .find_for_recommendation(recommendable)
+            .find_for_recommendation(recommendable, rateable_type)
         end
 
         # Map a preferences Hash by a collection of ratings.
@@ -77,7 +77,7 @@ module Coletivo
         end
 
         def load_preferences_for_recommendation(model)
-          r = model.class.find_ratings_for_recommendation(model)
+          r = model.class.find_ratings_for_recommendation(model, self)
           model.class.map_ratings_to_preferences(r)
         end
       end

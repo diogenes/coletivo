@@ -7,13 +7,16 @@ end
 class Movie < ActiveRecord::Base
 end
 
+class Actor < ActiveRecord::Base
+end
+
 def ratings_container
   Coletivo::Config.ratings_container
 end
 
 class Test::Unit::TestCase
   def setup
-    truncate! :person_ratings, :users, :movies
+    truncate! :person_ratings, :users, :movies, :actors
   end
 
   private

@@ -15,4 +15,10 @@ ActiveRecord::Schema.define(:version => 1) do
 
     t.timestamps
   end
+
+  create_table :actors do |t|
+    t.string :name
+
+    t.timestamps
+  end
 end

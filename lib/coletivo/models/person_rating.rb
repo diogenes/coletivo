@@ -6,8 +6,8 @@ module Coletivo
 
       validates :person, :rateable, :weight, :presence => true
 
-      def self.find_for_recommendation(recommendable)
-        find(:all)
+      def self.find_for_recommendation(person, rateable_type)
+        where(:rateable_type => rateable_type.to_s)
       end
     end
   end
