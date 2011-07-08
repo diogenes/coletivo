@@ -1,6 +1,31 @@
 = coletivo
 
-Description goes here.
+An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.
+
+== Installation:
+
+  sudo gem install coletivo
+  rails g coletivo
+  rake db:migrate
+
+== Usage:
+
+At your Rails model that represents a person (can be an _User_, _Member_, or something like that):
+
+  class User < ActiveRecord::Base
+    has_own_preferences
+
+    # ...
+  end
+
+  # ratings
+  current_user = User.create(:name => 'Diogenes')
+  movie = Movie.create(:name => 'The Tourist', :year => 2010)
+
+  current_user.rate!(movie, 4.5)
+
+  # after a lot of ratings... recommendations.
+  Movie.find_recommendations_for(current_user) # => movies and more movies...
 
 == Contributing to coletivo
  
