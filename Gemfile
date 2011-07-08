@@ -1,10 +1,7 @@
 source "http://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
 
-# Add dependencies to develop your gem here.
-# Include everything needed to run rake, tests, features, etc.
+gem "rails", ">= 3.0.7"
+
 group :development do
   gem "shoulda", "~> 3.0.0.beta2"
   gem "bundler", "~> 1.0.14"
