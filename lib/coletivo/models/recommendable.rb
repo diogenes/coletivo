@@ -9,7 +9,7 @@ module Coletivo
       module ClassMethods
         def find_recommendations_for(model, options = {})
           sim_totals, weighted_means = {}, {}
-          preferences = options[:preferences] ||
+          preferences = options[:preferences] ||=
             load_preferences_for_recommendation(model)
 
           preferences.each do |other, other_prefs|
@@ -64,13 +64,13 @@ module Coletivo
         #
         # Expected keys are :person or :rateable
         def map_ratings_to_preferences(ratings)
-          #TODO: ?? #preferences_by_ratings(:rateable, :person): Item based rec.
-          key, subkey = :person, :rateable
+          #TODO: (???) Item based mapping.
+          key, subkey = :person_id, :rateable_id
           preferences = {}
 
           ratings.each do |rating|
-            p = preferences[rating.send(key).id] ||= {}
-            p[rating.send(subkey).id] = rating.weight
+            p = preferences[rating.send(key)] ||= {}
+            p[rating.send(subkey)] = rating.weight
           end
 
           preferences
