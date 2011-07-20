@@ -41,23 +41,6 @@ module Coletivo
             .compact
         end
 
-        # Map a preferences Hash by a collection of ratings.
-        #
-        # Rating objects have a +person+, a +rateable+ object and a +weight+.
-        #
-        # The preferences can be mapped for _persons_, like that:
-        #   {
-        #      :person_1 => {:movie_1 => 2.0, :movie_2 => 5.0},
-        #      :person_2 => {:movie_1 => 3.0, :movie_2 => 4.0}
-        #   }
-        #
-        # Or for _rateable_ items, like that:
-        #   {
-        #      :movie_1 => {:person_1 => 2.0, :person_2 => 3.0},
-        #      :movie_2 => {:person_1 => 5.0, :person_2 => 4.0}
-        #   }
-        #
-        # Expected keys are :person or :rateable
         def map_ratings_to_preferences(ratings)
           #TODO: (???) Item based mapping.
           key, subkey = :person_id, :rateable_id

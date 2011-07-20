@@ -14,5 +14,5 @@ module Coletivo
       end
     end
   end
-end # Similarity
+end
 
