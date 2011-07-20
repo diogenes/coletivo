@@ -1,6 +1,7 @@
 = coletivo
 
-An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.
+A simple Rails 3 recommendations engine.
+It can use the {Euclidean Distance}[http://en.wikipedia.org/wiki/Euclidean_distance] or the {Pearson's Correlation Coefficient}[http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient] to define the similarity between persons and their preferences.
 
 == Installation:
 
@@ -18,14 +19,20 @@ At your Rails model that represents a person (can be an _User_, _Member_, or som
     # ...
   end
 
-  # ratings
+So, a person can rate things:
+
   current_user = User.create(:name => 'Diogenes')
   movie = Movie.create(:name => 'The Tourist', :year => 2010)
 
   current_user.rate!(movie, 4.5)
 
-  # after a lot of ratings... recommendations.
+And after a lot of ratings... *recommendations*:
+
   Movie.find_recommendations_for(current_user) # => movies and more movies...
+
+By default, the similarity strategy used is Euclidean Distance, but you can change that passing the _strategy_ option:
+  Movie.find_recommendations_for(current_user, :strategy => :pearson)
+
 
 == Contributing to coletivo
  
@@ -41,4 +48,3 @@ At your Rails model that represents a person (can be an _User_, _Member_, or som
 
 Copyright (c) 2011 Diógenes Falcão. See LICENSE.txt for
 further details.
-
