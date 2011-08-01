@@ -69,7 +69,7 @@ class RecommendableTest < Test::Unit::TestCase
         }
 
         recommendations = Movie.find_recommendations_for(@person1,
-          :preferences => p)
+          :preferences => p, :strategy => strategy)
 
         assert recommendations.index(m2) < recommendations.index(m4)
       end
@@ -83,13 +83,13 @@ class RecommendableTest < Test::Unit::TestCase
         m4 = Movie.create(:name => 'Movie 4')
 
         p = {
-          @person1.id => {m3.id => 1.0},
+          @person1.id => {m1.id => 2.0, m3.id => 1.0},
           @person2.id => {m1.id => 1.5, m2.id => 4.7, m3.id => 1.5, m4.id => 2.5},
           person3.id => {m1.id => 2.5, m2.id => 6.0, m3.id => 0.5, m4.id => 1.5}
         }
 
-        assert_equal 2, Movie.limit(2).find_recommendations_for(@person1,
-          :preferences => p).size
+        assert_equal 1, Movie.limit(1).find_recommendations_for(@person1,
+          :preferences => p, :strategy => strategy).size
       end
     end
   end
