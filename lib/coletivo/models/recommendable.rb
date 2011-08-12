@@ -7,34 +7,12 @@ module Coletivo
       end
 
       module ClassMethods
-        def find_recommendations_for(model, options = {})
-          sim_totals, weighted_means = {}, {}
+        def find_recommendations_for(person, options = {})
           preferences = options[:preferences] ||=
-            load_preferences_for_recommendation(model)
+            load_preferences_for_recommendation(person)
+          top = predict_highest_ratings(person, preferences, options)
 
-          preferences.each do |other, other_prefs|
-            next if other == model
-
-            sim = model.similarity_with(other, options)
-            next if sim <= 0
-
-            other_prefs.each do |item, weight|
-              unless preferences[model.id].keys.include?(item)
-                sim_totals[item] ||= 0
-                weighted_means[item] ||= 0
-
-                sim_totals[item] += sim
-                weighted_means[item] += weight * sim
-              end
-            end
-          end
-
-          # DESC sort by weighted mean of ratings
-          # e.g: [[5.35, "movie_2"], [2.0, "movie_4"]]
-          top = weighted_means.collect { |i, mean| [mean/sim_totals[i], i] }\
-            .sort { |t_one, t_other| t_other <=> t_one }
-
-          ids = top.collect(&:last) # e.g: ['movie_2', 'movie_4']
+          ids = top.collect(&:last)
           models = where(:id => ids)
 
           top.collect { |weight, item| models.detect {|m| m.id == item } }\
@@ -54,11 +32,39 @@ module Coletivo
           preferences
         end
 
-        def load_preferences_for_recommendation(model)
+        def load_preferences_for_recommendation(person)
           r = Coletivo::Config.ratings_container\
-                .find_for_recommendation(model, self)
+                .find_for_recommendation(person, self)
 
           map_ratings_to_preferences(r)
+        end
+
+        private
+
+        def predict_highest_ratings(person, people_preferences, options)
+          data = {}
+          people_preferences.each do |other, other_prefs|
+            next if other == person
+
+            sim = person.similarity_with(other, options)
+            next if sim <= 0
+
+            other_prefs.each do |item, weight|
+              unless people_preferences[person.id].keys.include?(item)
+                data[item] ||= {:total_similarity => 0.0, :weighted_mean => 0.0}
+                data[item][:total_similarity] += sim
+                data[item][:weighted_mean] += weight * sim
+              end
+            end
+          end
+
+          # e.g: [[5.35, "movie_2"], [2.0, "movie_4"]]
+          guessed_rating_and_id = lambda { |item, item_data|
+            [item_data[:weighted_mean] / item_data[:total_similarity], item]
+          }
+
+          # DESC sorting by weighted mean of ratings
+          data.collect(&guessed_rating_and_id).sort_by(&:first).reverse
         end
       end
 
