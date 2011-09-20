@@ -1,7 +1,7 @@
 = coletivo
 
 A simple Rails 3 recommendations engine.
-It can use the {Euclidean Distance}[http://en.wikipedia.org/wiki/Euclidean_distance] or the {Pearson's Correlation Coefficient}[http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient] to define the similarity between persons and their preferences.
+Coletivo uses {Euclidean Distance}[http://en.wikipedia.org/wiki/Euclidean_distance] or {Pearson's Correlation Coefficient}[http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient] to calculate the similarity between persons and their preferences.
 
 == Installation:
 
