@@ -88,8 +88,8 @@ class RecommendableTest < Test::Unit::TestCase
           person3.id => {m1.id => 2.5, m2.id => 6.0, m3.id => 0.5, m4.id => 1.5}
         }
 
-        assert_equal 1, Movie.limit(1).find_recommendations_for(@person1,
-          :preferences => p, :strategy => strategy).size
+        assert_equal 1, Movie.find_recommendations_for(@person1,
+          :preferences => p, :strategy => strategy, :limit => 1).size
       end
     end
   end
