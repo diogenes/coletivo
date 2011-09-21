@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{coletivo}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Di\303\263genes Falc\303\243o"]
-  s.date = %q{2011-07-20}
+  s.date = %q{2011-09-20}
   s.description = %q{An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.}
   s.email = %q{diogenes.araujo@gmail.com}
   s.extra_rdoc_files = [
