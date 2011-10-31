@@ -22,7 +22,7 @@ ActiveRecord::Base.establish_connection({
 })
 ActiveRecord::Migration.verbose = false
 
-require 'test/db/schema'
+require 'db/schema'
 
 class Test::Unit::TestCase
 end

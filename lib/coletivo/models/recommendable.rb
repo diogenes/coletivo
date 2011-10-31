@@ -56,9 +56,9 @@ module Coletivo
           end
 
           # e.g: [[5.35, "movie_2"], [2.0, "movie_4"]]
-          guessed_rating_and_id = lambda { |item, item_data|
+          guessed_rating_and_id = Proc.new do |item, item_data|
             [item_data[:weighted_mean] / item_data[:total_similarity], item]
-          }
+          end
 
           # DESC sorting by weighted mean of ratings
           data.collect(&guessed_rating_and_id).sort_by(&:first).reverse
