@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Di\303\263genes Falc\303\243o"]
   s.date = %q{2011-10-31}
-  s.description = %q{An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.}
+  s.description = %q{A simple Rails 3 recommendations engine}
   s.email = %q{diogenes.araujo@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.}
+  s.summary = %q{A simple Rails 3 recommendations engine}
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
