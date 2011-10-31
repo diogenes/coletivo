@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{coletivo}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Di\303\263genes Falc\303\243o"]
-  s.date = %q{2011-09-20}
+  s.date = %q{2011-10-31}
   s.description = %q{An awesome, flexible, powerful, useful, tricky and liar Rails 3 recommendations engine.}
   s.email = %q{diogenes.araujo@gmail.com}
   s.extra_rdoc_files = [
@@ -46,12 +46,14 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0.14"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_development_dependency(%q<turn>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
       s.add_dependency(%q<rails>, [">= 3.0.7"])
       s.add_dependency(%q<shoulda>, ["~> 3.0.0.beta2"])
       s.add_dependency(%q<bundler>, ["~> 1.0.14"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
       s.add_dependency(%q<turn>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, [">= 3.0.7"])
@@ -59,6 +61,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0.14"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.2"])
     s.add_dependency(%q<turn>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
   end
 end
 
