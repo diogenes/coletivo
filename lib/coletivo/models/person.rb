@@ -23,11 +23,7 @@ module Coletivo
 
         def rate_or_update!(rateable, weight)
           r = Coletivo::Config.ratings_container.find_or_initialize_by_person_id_and_rateable_id_and_rateable_type(self.id, rateable.id, rateable.class)
-          r.person = self
-          r.rateable = rateable
-          r.weight = weight
-          r.save!
-          puts weight
+          r.update_attributes! :person => self, :rateable => rateable, :weight => weight
         end
       end # InstanceMethods
 
