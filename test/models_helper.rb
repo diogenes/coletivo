@@ -5,9 +5,11 @@ class User < ActiveRecord::Base
 end
 
 class Movie < ActiveRecord::Base
+  acts_as_rateable
 end
 
 class Actor < ActiveRecord::Base
+  acts_as_rateable
 end
 
 def ratings_container
