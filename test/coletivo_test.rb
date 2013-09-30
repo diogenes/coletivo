@@ -6,5 +6,6 @@ class ColetivoTest < Test::Unit::TestCase
     config.ratings_container = Object
 
     assert_equal Object, config.ratings_container
+    config.ratings_container = Coletivo::Models::PersonRating
   end
 end

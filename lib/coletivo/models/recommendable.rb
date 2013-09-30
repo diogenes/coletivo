@@ -7,13 +7,18 @@ module Coletivo
       end
 
       module ClassMethods
+
+        def acts_as_rateable
+          has_many :person_ratings, :as => :rateable, :class_name => Coletivo::Models::PersonRating
+        end
+
         def find_recommendations_for(person, options = {})
           preferences = options[:preferences] ||=
             load_preferences_for_recommendation(person)
           top = predict_highest_ratings(person, preferences, options)
           ids = top.collect(&:last)
 
-          where(:id => ids).limit(options[:limit]).all
+          where(:id => ids).limit(options[:limit]).to_a
         end
 
         def map_ratings_to_preferences(ratings)
@@ -66,6 +71,15 @@ module Coletivo
       end
 
       module InstanceMethods
+
+        def has_been_rated_by?(person)
+          person_ratings.find_by_person(person).present?
+        end
+
+        def rating_of(person)
+          person_ratings.find_by_person(person).weight
+        end
+
         def similarity_with(other_id, options = {})
           p = options[:preferences] ||
             self.class.load_preferences_for_recommendation(self)

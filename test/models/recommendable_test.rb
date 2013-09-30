@@ -91,6 +91,37 @@ class RecommendableTest < Test::Unit::TestCase
         assert_equal 1, Movie.find_recommendations_for(@person1,
           :preferences => p, :strategy => strategy, :limit => 1).size
       end
+
+      should "report true when a person has rated an item" do
+        person3 = User.create(:name => 'Person 3')
+
+        m1 = Movie.create(:name => 'Movie 1')
+
+        person3.rate! m1, -1
+        m1.reload
+
+        assert_equal true, m1.has_been_rated_by?(person3)
+      end
+
+      should "report false when a person has not rated an item" do
+        person3 = User.create(:name => 'Person 3')
+
+        m1 = Movie.create(:name => 'Movie 1')
+        m1.reload
+
+        assert_equal false, m1.has_been_rated_by?(person3)
+      end
+
+      should "report what a person has rated an item with" do
+        person3 = User.create(:name => 'Person 3')
+
+        m1 = Movie.create(:name => 'Movie 1')
+
+        person3.rate! m1, -1
+        m1.reload
+
+        assert_equal -1, m1.rating_of(person3)
+      end
     end
   end
 
