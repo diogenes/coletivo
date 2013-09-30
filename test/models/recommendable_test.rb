@@ -112,7 +112,7 @@ class RecommendableTest < Test::Unit::TestCase
         assert_equal false, m1.has_been_rated_by?(person3)
       end
 
-      should "report true what a person has rated an item with" do
+      should "report what a person has rated an item with" do
         person3 = User.create(:name => 'Person 3')
 
         m1 = Movie.create(:name => 'Movie 1')

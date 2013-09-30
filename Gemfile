@@ -1,11 +1,11 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem "rails", "3.2.14"
+gem "rails", '>= 4.0.0'
 
 group :development do
-  gem "shoulda", "~> 3.0.0.beta2"
+  gem "shoulda"
   gem "bundler"
-  gem "jeweler", "~> 1.6.2"
+  gem "jeweler"
   gem "turn"
   gem "sqlite3"
 end

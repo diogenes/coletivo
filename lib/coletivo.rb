@@ -2,6 +2,7 @@ require 'rails'
 require 'active_model'
 require 'active_record'
 require 'active_support'
+require 'action_controller'
 
 module Coletivo
   module Models
