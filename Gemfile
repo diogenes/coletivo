@@ -8,4 +8,5 @@ group :development do
   gem "jeweler", "~> 1.6.2"
   gem "turn"
   gem "sqlite3"
+  gem "rdoc"
 end
